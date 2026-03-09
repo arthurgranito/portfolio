@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#0A0A0A"/>
+  <!-- Blue accent dot -->
+  <circle cx="26" cy="24" r="2.5" fill="#3B82F6"/>
+  <!-- AG text -->
+  <text
+    x="4"
+    y="24"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="18"
+    font-weight="400"
+    fill="#FAFAFA"
+    letter-spacing="-1"
+  >AG</text>
+</svg>
