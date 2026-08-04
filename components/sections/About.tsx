@@ -7,7 +7,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import { useCountUp } from '@/hooks/useCountUp'
 
 const stats = [
-  { value: 2, suffix: '+', key: 'experience' as const },
+  { value: 1, suffix: '+', key: 'experience' as const },
   { value: 15, suffix: '+', key: 'students' as const },
   { value: 200, suffix: '+', key: 'employees' as const },
   { value: 10, suffix: 'h+', key: 'hours' as const },
@@ -29,10 +29,15 @@ function StatItem({ value, suffix, label, start }: { value: number; suffix: stri
   )
 }
 
+function escapeRegExp(s: string) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
 export function About() {
   const { t } = useLanguage()
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
+  const highlightRegex = new RegExp(`(${t.about.highlights.map(escapeRegExp).join('|')})`, 'g')
 
   return (
     <section id="about" className="py-[clamp(80px,12vw,160px)]">
@@ -50,8 +55,8 @@ export function About() {
             <p
               className="text-lg md:text-xl font-light leading-relaxed text-muted-foreground"
             >
-              {t.about.text.split(/(scalable|clean architecture|Java|React\/Next\.js|CI\/CD|Kubernetes|AWS|Computer Science)/g).map((part, i) =>
-                ['scalable', 'clean architecture', 'Java', 'React/Next.js', 'CI/CD', 'Kubernetes', 'AWS', 'Computer Science'].includes(part)
+              {t.about.text.split(highlightRegex).map((part, i) =>
+                t.about.highlights.includes(part)
                   ? <strong key={i} className="text-foreground font-medium">{part}</strong>
                   : part
               )}

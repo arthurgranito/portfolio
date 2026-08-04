@@ -7,15 +7,19 @@ import { useLanguage } from '@/context/LanguageContext'
 const skillCategories = [
   {
     title: 'Backend',
-    skills: ['Java 8/11/17+', 'Spring Boot', 'Maven', 'Hibernate', 'JUnit', 'Mockito', 'RabbitMQ', 'Kafka'],
+    skills: ['Java 8/11/17/21', 'Spring Boot', 'Spring Security', 'Spring Data', 'Maven', 'Hibernate', 'JUnit', 'Mockito', 'RabbitMQ', 'Kafka'],
   },
   {
     title: 'Frontend',
     skills: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'TailwindCSS', 'Bootstrap', 'Shadcn-ui', 'Styled Components', 'React Native'],
   },
   {
+    title: 'AI & LLMs',
+    skills: ['RAG', 'LangChain', 'pgvector', 'Ollama', 'Embeddings', 'Vector Search (MMR)', 'Prompt Engineering', 'Claude / LLM Integration', 'Python', 'FastAPI', 'Pandas', 'Matplotlib'],
+  },
+  {
     title: 'DevOps & Cloud',
-    skills: ['Docker', 'Terraform', 'Jenkins', 'GitHub Actions', 'AWS', 'ECS', 'Kubernetes', 'Grafana', 'Prometheus', 'Redis'],
+    skills: ['Docker', 'Nginx', 'Terraform', 'Jenkins', 'GitHub Actions', 'CI/CD', 'AWS (EC2/ECS)', 'Kubernetes', 'Grafana', 'Prometheus', 'Redis'],
   },
   {
     title: 'Databases',
@@ -23,15 +27,11 @@ const skillCategories = [
   },
   {
     title: 'Tools & Methods',
-    skills: ['Git', 'GitHub', 'Jira', 'Figma', 'Kanban', 'Scrum', 'Clean Architecture', 'SOLID', 'Microservices', 'Eureka', 'JWT'],
-  },
-  {
-    title: 'AI & Automation',
-    skills: ['Python', 'Pandas', 'Matplotlib', 'AI Integration'],
+    skills: ['Git', 'GitHub', 'Jira', 'Figma', 'Kanban', 'Scrum', 'Clean Architecture', 'SOLID', 'Microservices', 'Eureka', 'JWT', 'OAuth 2.0'],
   },
   {
     title: 'Languages',
-    skills: ['Portuguese (Native)', 'English (Fluent)'],
+    skills: ['Portuguese (Native)', 'English (Professional)'],
   },
 ]
 
