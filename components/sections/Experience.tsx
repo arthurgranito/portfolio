@@ -28,9 +28,9 @@ export function Experience() {
 
           <div className="space-y-12">
             {t.experience.jobs.map((job, i) => {
-              const isPresent = job.period.includes('Present') || job.period.includes('Presente')
+              const isPresent = job.period.includes(t.experience.present)
               return (
-                <ExperienceCard key={i} job={job} index={i} isPresent={isPresent} />
+                <ExperienceCard key={i} job={job} index={i} isPresent={isPresent} presentLabel={t.experience.present} />
               )
             })}
           </div>
@@ -48,7 +48,7 @@ interface Job {
   bullets: string[]
 }
 
-function ExperienceCard({ job, index, isPresent }: { job: Job; index: number; isPresent: boolean }) {
+function ExperienceCard({ job, index, isPresent, presentLabel }: { job: Job; index: number; isPresent: boolean; presentLabel: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -78,7 +78,7 @@ function ExperienceCard({ job, index, isPresent }: { job: Job; index: number; is
           <div className="flex flex-col items-end gap-1">
             {isPresent && (
               <span className="text-xs px-2 py-0.5 bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20 rounded-full font-mono">
-                Present
+                {presentLabel}
               </span>
             )}
             <span className="text-xs text-muted-foreground font-mono" style={{ fontFamily: 'var(--font-jetbrains)' }}>

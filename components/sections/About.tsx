@@ -8,8 +8,8 @@ import { useCountUp } from '@/hooks/useCountUp'
 
 const stats = [
   { value: 1, suffix: '+', key: 'experience' as const },
-  { value: 15, suffix: '+', key: 'students' as const },
-  { value: 200, suffix: '+', key: 'employees' as const },
+  { value: 99, suffix: '%', key: 'accuracy' as const },
+  { value: 75, suffix: '%', key: 'keys' as const },
   { value: 10, suffix: 'h+', key: 'hours' as const },
 ]
 

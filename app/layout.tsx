@@ -26,13 +26,13 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Arthur Granito — Full Stack Developer',
+  title: 'Arthur Granito — Full Stack Developer & AI Engineer',
   description:
-    'Full Stack Developer specializing in Java, Spring Boot, React and Next.js. Building scalable, clean and well-structured applications.',
-  keywords: ['Arthur Granito', 'Full Stack Developer', 'Java', 'Spring Boot', 'React', 'Next.js', 'Portfolio'],
+    'Full Stack Developer & AI Engineer working with Python, LLMs / RAG, Java (Spring Boot) and React. Shipping production systems from design to deploy.',
+  keywords: ['Arthur Granito', 'Full Stack Developer', 'AI Engineer', 'LLM', 'RAG', 'LangGraph', 'Python', 'Java', 'Spring Boot', 'React', 'Portfolio'],
   authors: [{ name: 'Arthur Granito' }],
   openGraph: {
-    title: 'Arthur Granito — Full Stack Developer',
+    title: 'Arthur Granito — Full Stack Developer & AI Engineer',
     description: 'Full Stack Developer based in Rio de Janeiro, Brazil',
     type: 'website',
   },

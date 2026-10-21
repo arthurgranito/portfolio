@@ -1,22 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Star, GitFork, ExternalLink, Github } from 'lucide-react'
-import { GitHubRepo } from '@/types/github'
-import { getLanguageColor } from '@/lib/github'
+import { ExternalLink, Github } from 'lucide-react'
+import { Project } from '@/lib/projects'
 import { useLanguage } from '@/context/LanguageContext'
 
 interface ProjectCardProps {
-  repo: GitHubRepo
+  project: Project
   index: number
 }
 
-function formatRepoName(name: string): string {
-  return name.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
-}
-
-export function ProjectCard({ repo, index }: ProjectCardProps) {
+export function ProjectCard({ project, index }: ProjectCardProps) {
   const { t } = useLanguage()
+  const content = t.projects.items[project.id]
 
   return (
     <motion.div
@@ -25,85 +21,74 @@ export function ProjectCard({ repo, index }: ProjectCardProps) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.08, duration: 0.5 }}
       whileHover={{ y: -4 }}
-      className="group flex flex-col bg-card border border-border rounded-sm p-6 hover:border-foreground/30 hover:shadow-lg dark:hover:shadow-foreground/5 transition-all duration-300"
+      className="group flex flex-col bg-card border border-border rounded-sm p-6 md:p-8 hover:border-foreground/30 hover:shadow-lg dark:hover:shadow-foreground/5 transition-all duration-300"
     >
       {/* Header */}
-      <div className="flex items-start justify-between gap-3 mb-3">
+      <div className="flex items-start justify-between gap-3 mb-1">
         <h3
-          className="text-xl font-light leading-tight"
+          className="text-2xl font-light leading-tight"
           style={{ fontFamily: 'var(--font-cormorant)' }}
         >
-          {formatRepoName(repo.name)}
+          {project.name}
         </h3>
-        <div className="flex items-center gap-2 flex-shrink-0">
-          {repo.homepage && (
-            <a
-              href={repo.homepage}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label={t.projects.view_demo}
-            >
-              <ExternalLink size={14} />
-            </a>
-          )}
-          <a
-            href={repo.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label={t.projects.view_github}
-          >
-            <Github size={14} />
-          </a>
-        </div>
+        <a
+          href={project.homepage}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors flex-shrink-0 mt-1.5"
+          style={{ fontFamily: 'var(--font-jetbrains)' }}
+          aria-label={t.projects.view_demo}
+        >
+          {project.homepage.replace(/^https?:\/\//, '')}
+          <ExternalLink size={12} />
+        </a>
       </div>
+      <p className="text-sm text-foreground/80 mb-4">{content.tagline}</p>
 
       {/* Description */}
-      <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1 line-clamp-3">
-        {repo.description || '—'}
+      <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+        {content.description}
       </p>
 
-      {/* Topics */}
-      {repo.topics && repo.topics.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {repo.topics.slice(0, 4).map((topic) => (
-            <span
-              key={topic}
-              className="text-xs px-2 py-0.5 bg-muted text-muted-foreground rounded-sm"
-              style={{ fontFamily: 'var(--font-jetbrains)' }}
-            >
-              {topic}
-            </span>
+      {content.bullets.length > 0 && (
+        <ul className="space-y-2 mb-5">
+          {content.bullets.map((b, bi) => (
+            <li key={bi} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
+              <span className="mt-2 flex-shrink-0 w-1 h-1 rounded-full bg-highlight" />
+              {b}
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
+      {/* Stack */}
+      <div className="flex flex-wrap gap-1.5 mb-5 mt-auto">
+        {project.stack.map((tech) => (
+          <span
+            key={tech}
+            className="text-xs px-2 py-0.5 bg-muted text-muted-foreground rounded-sm"
+            style={{ fontFamily: 'var(--font-jetbrains)' }}
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+
       {/* Footer */}
-      <div className="flex items-center gap-4 mt-auto pt-4 border-t border-border">
-        {repo.language && (
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            <span
-              className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-              style={{ backgroundColor: getLanguageColor(repo.language) }}
-            />
-            {repo.language}
-          </div>
-        )}
-        <div className="flex items-center gap-3 ml-auto text-xs text-muted-foreground">
-          {repo.stargazers_count > 0 && (
-            <span className="flex items-center gap-1">
-              <Star size={11} />
-              {repo.stargazers_count}
-            </span>
-          )}
-          {repo.forks_count > 0 && (
-            <span className="flex items-center gap-1">
-              <GitFork size={11} />
-              {repo.forks_count}
-            </span>
-          )}
-        </div>
+      <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-border">
+        {project.repos.map((repo) => (
+          <a
+            key={repo.url}
+            href={repo.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            aria-label={`${t.projects.view_github} (${repo.label})`}
+          >
+            <Github size={12} />
+            {repo.label}
+          </a>
+        ))}
       </div>
     </motion.div>
   )

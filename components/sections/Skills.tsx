@@ -6,28 +6,20 @@ import { useLanguage } from '@/context/LanguageContext'
 
 const skillCategories = [
   {
-    title: 'Backend',
-    skills: ['Java 8/11/17/21', 'Spring Boot', 'Spring Security', 'Spring Data', 'Maven', 'Hibernate', 'JUnit', 'Mockito', 'RabbitMQ', 'Kafka'],
-  },
-  {
-    title: 'Frontend',
-    skills: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'TailwindCSS', 'Bootstrap', 'Shadcn-ui', 'Styled Components', 'React Native'],
-  },
-  {
     title: 'AI & LLMs',
-    skills: ['RAG', 'LangChain', 'pgvector', 'Ollama', 'Embeddings', 'Vector Search (MMR)', 'Prompt Engineering', 'Claude / LLM Integration', 'Python', 'FastAPI', 'Pandas', 'Matplotlib'],
+    skills: ['LangGraph', 'LangChain', 'RAG', 'Text-to-SQL', 'Multi-agent systems', 'LLM evals', 'pgvector', 'Embeddings', 'Ollama', 'OpenAI API', 'Claude API', 'Gemini API'],
   },
   {
-    title: 'DevOps & Cloud',
-    skills: ['Docker', 'Nginx', 'Terraform', 'Jenkins', 'GitHub Actions', 'CI/CD', 'AWS (EC2/ECS)', 'Kubernetes', 'Grafana', 'Prometheus', 'Redis'],
+    title: 'Backend',
+    skills: ['Python', 'Django', 'Django REST Framework', 'FastAPI', 'SQLAlchemy', 'Pytest', 'Java', 'Spring Boot', 'Spring Security'],
   },
   {
-    title: 'Databases',
-    skills: ['PostgreSQL', 'MySQL', 'Oracle', 'MongoDB', 'SQLite'],
+    title: 'Frontend & Mobile',
+    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'React Native'],
   },
   {
-    title: 'Tools & Methods',
-    skills: ['Git', 'GitHub', 'Jira', 'Figma', 'Kanban', 'Scrum', 'Clean Architecture', 'SOLID', 'Microservices', 'Eureka', 'JWT', 'OAuth 2.0'],
+    title: 'Data & Infra',
+    skills: ['PostgreSQL', 'Supabase', 'MongoDB', 'Oracle', 'Docker', 'Git', 'GitHub Actions (CI/CD)', 'AWS', 'Vercel', 'nginx'],
   },
   {
     title: 'Languages',

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Github, Copy, Check } from 'lucide-react'
+import { Mail, Github, Linkedin, Copy, Check } from 'lucide-react'
 import { SectionTitle } from '@/components/shared/SectionTitle'
 import { useLanguage } from '@/context/LanguageContext'
 
@@ -96,6 +96,30 @@ export function Contact() {
                 </p>
                 <span className="text-sm group-hover:text-highlight transition-colors">
                   github.com/arthurgranito
+                </span>
+              </div>
+            </motion.a>
+
+            {/* LinkedIn */}
+            <motion.a
+              href="https://linkedin.com/in/arthurgranito"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="group flex items-center gap-4 p-5 border border-border hover:border-foreground/40 transition-colors bg-card"
+            >
+              <div className="w-10 h-10 bg-muted rounded-sm flex items-center justify-center flex-shrink-0">
+                <Linkedin size={16} className="text-muted-foreground" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-muted-foreground mb-0.5" style={{ fontFamily: 'var(--font-jetbrains)' }}>
+                  {t.contact.linkedin_label}
+                </p>
+                <span className="text-sm group-hover:text-highlight transition-colors">
+                  linkedin.com/in/arthurgranito
                 </span>
               </div>
             </motion.a>
